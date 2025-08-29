@@ -1,6 +1,5 @@
 // app/api/protected/activity/route.ts
 import { connectDB } from "@/inngest/utils/db";
-import { Activity } from "@/models/Activity";
 import { Mood } from "@/models/Mood";
 import { NextResponse } from "next/server";
 
@@ -10,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const userId = req.headers.get("userId");
     const { score , note } = await req.json();
-    const res = await Mood.create({
+    await Mood.create({
       userId,
       score,
       note

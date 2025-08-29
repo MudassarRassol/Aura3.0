@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const userId = req.headers.get("userId");
     const { type, name, description, duration } = await req.json();
     console.log(type, name, description, duration, userId);
-    const activity = await Activity.create({
+    await Activity.create({
       userId,
       type,
       name,

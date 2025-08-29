@@ -49,7 +49,7 @@ const Breathing = () => {
     }, 100);
 
     return () => clearInterval(timer);
-  }, [phase, isPaused, isCompleted, round]);
+  }, [phase, isPaused, isCompleted, round,steps]);
 
   return (
     <div className="w-full flex flex-col items-center justify-center">

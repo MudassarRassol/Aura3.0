@@ -80,7 +80,7 @@ const page = () => {
         <div className=" grid grid-cols-1 md:grid-cols-3 2xl:grids-cols-4 gap-4 p-10 ">
           {features.map((ele, index) => {
             return (
-              <div className=" flex gap-2 flex-col border border-primary/20 rounded-2xl p-10 shadow-md ">
+              <div key={index} className=" flex gap-2 flex-col border border-primary/20 rounded-2xl p-10 shadow-md ">
                 {ele.icon}
                 <span className="text-lg font-semibold">{ele.title}</span>
                 <span>{ele.description}</span>
@@ -97,7 +97,7 @@ const page = () => {
           Join thousands of users benefiting from AI-powered mental health support.
         </p>
         <Link href={'/page/dashboard'} className=" cursor-pointer " >
-        <Button className=" flex items-center text-foreground cursor-pointer text-black " >
+        <Button className=" flex items-center  cursor-pointer text-black " >
             Start Your Journey 
             <Heart size={15} />
         </Button>

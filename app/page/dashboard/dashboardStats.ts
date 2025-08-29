@@ -1,5 +1,5 @@
 // app/page/dashboard/dashboardStats.ts
-import { Activity, MessageSquare, Smile, Percent,Target } from "lucide-react";
+import { Activity, Smile, Percent,Target } from "lucide-react";
 
 const getMoodEmoji = (score: number) => {
   if (score <= 25) return "😔"; // Very Sad

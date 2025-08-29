@@ -17,6 +17,7 @@ const Insights = ({refreshSignal}:any) => {
         const res = await axios.get("/api/ai");
         setData(res.data);
       } catch (err: any) {
+        console.error("Error fetching insights:", err);
         setError("Failed to fetch insights");
       } finally {
         setLoading(false);

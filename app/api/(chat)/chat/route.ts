@@ -1,6 +1,6 @@
 // ✅ backend route (e.g. app/api/chat/route.ts)
 import { google } from "@ai-sdk/google";
-import { convertToModelMessages, streamText, UIMessage } from "ai";
+import { convertToModelMessages, streamText } from "ai";
 import mongoose from "mongoose";
 import { ChatMessage, ChatSession } from "@/models/Chat";
 
@@ -12,9 +12,8 @@ export async function POST(req: Request) {
     }
     const userId = new mongoose.Types.ObjectId(userIdRaw);
 
-    const { text, messages } = await req.json();
+    const { messages } = await req.json();
     console.log(JSON.stringify(messages, null, 2));
-    const modelMessages = convertToModelMessages(messages.slice(-1));
 
     const userMessage = messages[messages.length - 1]; // last message user ka hoga
     const { sessionId } = userMessage.metadata || {};
@@ -42,7 +41,7 @@ export async function POST(req: Request) {
       { $push: { messages: savedUserMessage._id } }
     );
 
-    const lastthreemessage = await messages.slice(-3);
+    const lastthreemessage = await messages.slice(-1);
 
     // AI Response
     const result = streamText({
@@ -79,7 +78,7 @@ export async function POST(req: Request) {
                 Keep the tone warm, human-like, and encouraging. Do not sound robotic.  
                 `,
         },
-        ...modelMessages, // ✅ spread so it's flat,
+        ...lastthreemessage, // ✅ spread so it's flat,
       ],
     });
 

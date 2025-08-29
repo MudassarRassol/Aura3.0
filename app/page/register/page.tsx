@@ -10,28 +10,28 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const page = () => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-  const [confirmpassword, setconfirmpassword] = useState("");
-  const [name, setname] = useState("");
-  const [error, seterror] = useState("");
-  const router = useRouter();
-  const [loading, setloading] = useState(false);
+  const [Email, setemail] = useState("");
+  const [Password, setpassword] = useState("");
+  const [Confirmpassword, setconfirmpassword] = useState("");
+  const [Name, setname] = useState("");
+  const [Error, seterror] = useState("");
+  const Router = useRouter();
+  const [Loading, setloading] = useState(false);
   const handelsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       seterror("");
       setloading(true);
-      if (password === confirmpassword) {
+      if (Password === Confirmpassword) {
         const response = await axios.post("/api/register", {
-          email,
-          password,
+          Email,
+          Password,
           username: name,
         });
 
         if (response.status === 201) {
           setloading(false);
-          router.push("/page/login");
+          Router.push("/page/login");
         }
       } else {
         seterror("Passwords do not match");
@@ -69,7 +69,7 @@ const page = () => {
               <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
                 <Mail className=" w-5 h-5 m-2  " />
                 <Input
-                  value={name}
+                  value={Name}
                   onChange={(e) => {
                     setname(e.target.value);
                   }}
@@ -86,7 +86,7 @@ const page = () => {
               <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
                 <Mail className=" w-5 h-5 m-2  " />
                 <Input
-                  value={email}
+                  value={Email}
                   onChange={(e) => {
                     setemail(e.target.value);
                   }}
@@ -104,7 +104,7 @@ const page = () => {
             <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
               <Key className=" w-5 h-5 m-2  " />
               <Input
-                value={password}
+                value={Password}
                 onChange={(e) => {
                   setpassword(e.target.value);
                 }}
@@ -122,7 +122,7 @@ const page = () => {
             <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
               <Key className=" w-5 h-5 m-2  " />
               <Input
-                value={confirmpassword}
+                value={Confirmpassword}
                 onChange={(e) => {
                   setconfirmpassword(e.target.value);
                 }}
@@ -135,13 +135,13 @@ const page = () => {
           </div>
           <Button type="submit" className=" mt-4  text-black">
             {
-              loading
+              Loading
                 ? "Creating..."
                 : "Sign Up"
             }
           </Button>
         </form>
-        {error && <p className=" text-red-500 text-center mt-4 ">{error}</p>}
+        {Error && <p className=" text-red-500 text-center mt-4 ">{Error}</p>}
         <div className=" flex items-center gap-4 justify-center ">
           <p>Already have an account</p>
           <span>|</span>

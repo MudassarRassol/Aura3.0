@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import mongoose from "mongoose";
 import { ChatSession, ChatMessage } from "@/models/Chat";
 import { Mood } from "@/models/Mood";
 import { Activity } from "@/models/Activity"; // 👈 import Activity model
 import { connectDB } from "@/inngest/utils/db";
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     await connectDB();
 

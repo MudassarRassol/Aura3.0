@@ -7,8 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 const page = () => {
-  const [email, setemail] = useState("");
-  const [status,setstatus] = useState(400);
+  const [Email, setEmail] = useState("");
+  const [Status,setStatus] = useState(400);
   const handelsubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -16,7 +16,7 @@ const page = () => {
   return (
     <div className=" h-screen md:min-h-screen flex items-center justify-center mt-10  ">
       <Card className=" w-full md:max-w-3xl md:min-w-3xl  bg-transparent backdrop-blur-2xl   ">
-        <div className={` ${status == 200  && 'hidden'} flex flex-col items-center justify-center`}>
+        <div className={` ${Status == 200  && 'hidden'} flex flex-col items-center justify-center`}>
           <span className=" font-semibold text-4xl text-primary  ">
             Forgot Password
           </span>
@@ -24,7 +24,7 @@ const page = () => {
             Enter your email to receive a password reset link.
           </p>
         </div>
-        {status == 200 ? (
+        {Status == 200 ? (
           <div className=" flex flex-col items-center justify-center " >
             <span className=" text-3xl font-bold text-primary " >Check Your Email!</span>
             <span>If an account exists, a reset link has been sent.</span>
@@ -41,9 +41,9 @@ const page = () => {
               <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
                 <Mail className=" w-5 h-5 m-2  " />
                 <Input
-                  value={email}
+                  value={Email}
                   onChange={(e) => {
-                    setemail(e.target.value);
+                    setEmail(e.target.value);
                   }}
                   id="email"
                   placeholder="Enter your email "
@@ -51,8 +51,8 @@ const page = () => {
                 />
               </div>
             </div>
-            <Button type="submit" className=" mt-4  text-black">
-              Send Reset Link
+            <Button type="submit" className=" mt-4  text-black" onClick={()=>{setStatus(200)}} >
+              Send Reset Link 
             </Button>
           </form>
         )}

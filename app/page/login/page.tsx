@@ -13,12 +13,12 @@ import { useDispatch } from "react-redux";
 import { login } from "@/redux/store/authSlice";
 const page = () => {
 
-  const [email,setemail] = useState("");
-  const [password,setpassword] = useState("");
-  const [error, seterror] = useState("");
-  const [loading, setloading] = useState(false);
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const [Email,setemail] = useState("");
+  const [Password,setpassword] = useState("");
+  const [Error, seterror] = useState("");
+  const [Loading, setloading] = useState(false);
+  const Dispatch = useDispatch();
+  const Router = useRouter();
 
 
   const handelsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,14 +28,14 @@ const page = () => {
       setloading(true);
       setloading(true);
         const response = await axios.post("/api/login", {
-          email,
-          password
+          Email,
+          Password
         });
 
         if (response.status === 201) {
           setloading(false);
-          dispatch(login());
-          router.push("/");
+          Dispatch(login());
+          Router.push("/");
         }
     } catch (err) {
       setloading(false);
@@ -67,7 +67,7 @@ const page = () => {
             <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
               <Mail className=" w-5 h-5 m-2  " />
               <Input
-              value={email}
+              value={Email}
               onChange={(e)=>{setemail(e.target.value)}}
                 id="email"
                 placeholder="Enter your email "
@@ -82,7 +82,7 @@ const page = () => {
             <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
               <Key className=" w-5 h-5 m-2  " />
               <Input
-                value={password}
+                value={Password}
                 onChange={(e)=>{setpassword(e.target.value)}}
                 id="password"
                 placeholder="Enter your password "
@@ -93,14 +93,14 @@ const page = () => {
           </div>
           <Button type="submit" className=" mt-4  text-black">
             {
-              loading ? "Loading..." : "Sign In"
+              Loading ? "Loading..." : "Sign In"
             }
           </Button>
         </form>
         {
-          error && (
+          Error && (
             <p className=" text-red-500 text-center mt-4 " >
-              {error}
+              {Error}
             </p>
           )
         }

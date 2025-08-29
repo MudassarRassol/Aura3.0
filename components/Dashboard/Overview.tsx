@@ -8,9 +8,7 @@ import { Loader2 } from "lucide-react";
 
 const Overview = ({refreshSignal}:any) => {
   const [stats, setStats] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(true);
     const fetchStats = async () => {
       try {
         const res = await fetch("/api/process"); // 👈 aapka API route
@@ -19,8 +17,6 @@ const Overview = ({refreshSignal}:any) => {
         setStats(buildDashboardStats(data));
       } catch (err) {
         console.error("Error fetching dashboard stats:", err);
-      }finally {
-        setLoading(false);
       }
     };
 
@@ -36,7 +32,6 @@ const Overview = ({refreshSignal}:any) => {
             Your wellness metrics for <TodayDate />
           </p>
         </div>
-
         {
           stats.length == 0 ? (
             <div className=" w-full h-full mt-24 flex items-center justify-center  " >

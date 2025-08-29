@@ -38,8 +38,7 @@ const Page = () => {
   const [InputMessage, setInputMessage] = useState("");
 
   const [loadingMessage, setLoadingMessage] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
-  const [sessionmessage, setSessionMessage] = useState<any[]>([]); // [sessionmessage,]
+  const [Sessionmessage, setSessionMessage] = useState<any[]>([]); // [sessionmessage,]
 
   const { messages, sendMessage, status, error, stop } = useChat({});
 
@@ -345,7 +344,7 @@ const Page = () => {
             <div className=" h-screen flex items-center justify-center">
               <Loader2 className="w-4 h-4 animate-spin" />
             </div>
-          ) : sessionmessage.length === 0 && messages.length === 0 ? (
+          ) : Sessionmessage.length === 0 && messages.length === 0 ? (
             <div className=" h-screen flex flex-col items-center justify-center relative ">
               <div
                 className=" w-[500px] h-[400px] rounded-full blur-3xl transition-all duration-700 ease-in-out bg-gradient-to-r from-[#5cffb0] 
@@ -378,9 +377,9 @@ const Page = () => {
             <div className="flex-1 overflow-y-auto scroll-smooth">
               <div className=" max-w-3xl mx-auto ">
                 <AnimatePresence initial={false}>
-                  {sessionmessage.map((message, index) => (
+                  {Sessionmessage.map((message, index) => (
                     <motion.div
-                      key={message.id}
+                      key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -421,7 +420,7 @@ const Page = () => {
                   <AnimatePresence initial={false}>
                     {messages.map((message, index) => (
                       <motion.div
-                        key={message.id}
+                        key={index}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -465,27 +464,7 @@ const Page = () => {
                     ))}
                   </AnimatePresence>
                 )}
-                {isTyping && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="px-6 py-8 flex gap-4 bg-muted/30 "
-                  >
-                    <div className="w-8 h-8 shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center ring-1 ring-primary/20 ">
-                        <Loader2 className="w-6 h-6 animate-spin" />
-                      </div>
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      <p className=" font-medium text-shadow-md ">
-                        AI Therapist
-                      </p>
-                      <p className=" text-sm text-muted-foreground ">
-                        Typing...
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
+
                 <div ref={messagesEndRef} />
               </div>
             </div>
@@ -524,11 +503,11 @@ const Page = () => {
                     "focus:outline-none  ",
                     "transition-all duration-300 ease-in-out ",
                     "placeholder:text-muted-foreground/70",
-                    (isTyping || status == "streaming") &&
+                    (status == "streaming") &&
                       " opacity-50 cursor-not-allowed "
                   )}
                   rows={1}
-                  disabled={isTyping || status == "streaming"}
+                  disabled={ status == "streaming"}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
                       e.preventDefault();

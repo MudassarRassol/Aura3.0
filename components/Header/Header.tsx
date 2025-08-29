@@ -5,7 +5,7 @@ import {
   LogOut,
 } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ThemeToggle from "../ThemeToggle";
 import SignInButton from "../auth/Sign-In-button";
 import { navItems } from "./page";

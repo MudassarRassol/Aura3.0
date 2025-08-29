@@ -20,7 +20,7 @@ const EmotionSlider = ({
 }: EmotionSliderProps) => {
   return (
     <div className="flex flex-col items-center justify-center w-full -mt-10  md:w-2xl mx-auto px-3 ">
-      <span>Whatever you're feeling, we're here to listen</span>
+      <span>{`Whatever you're feeling, we're here to listen`}</span>
 
       {/* Emoji List */}
       <div className="flex items-center justify-around gap-5 w-full  md:w-3xl  mt-2">
@@ -53,7 +53,7 @@ const EmotionSlider = ({
       />
 
       <p className="mt-5 animate-pulse text-sm">
-        Slide to express how you're feeling today
+        {`Slide to express how you're feeling today`}
       </p>
 
       {/* CTA */}

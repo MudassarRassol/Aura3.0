@@ -34,10 +34,7 @@ export async function GET(req: Request) {
       date: { $gte: today },
     });
 
-    const totalMessages = sessions.reduce(
-      (acc, session) => acc + (session.messages?.length || 0),
-      0
-    );
+
 
     let totalPoints = 0;
     let maxPoints = sessions.length * 70;
@@ -82,7 +79,7 @@ export async function GET(req: Request) {
       })
     );
 
-    let activityPoints = Math.min(activities.length * 10, 30);
+    const activityPoints = Math.min(activities.length * 10, 30);
     totalPoints += activityPoints;
 
     const completionRate =

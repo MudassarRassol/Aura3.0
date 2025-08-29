@@ -1,18 +1,9 @@
 import React from "react";
 import {
-  Brain,
-  Shield,
-  Activity,
-  Wifi,
-  Lock,
   Heart,
-  LineChart,
-  ScanLine,
   Sparkles,
   CircleFadingPlusIcon,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const about = [
     {
@@ -41,7 +32,7 @@ const page = () => {
           About Aura3.0
         </h1>
         <p className=" text-sm text-muted-foreground mt-4 p-3 md:w-2xl text-center ">
-          We're revolutionizing mental health support by combining cutting-edge
+          {`We're`} revolutionizing mental health support by combining cutting-edge
           AI technology with the security and transparency of blockchain.
         </p>
       </div>
@@ -49,7 +40,7 @@ const page = () => {
         <div className=" grid grid-cols-1 md:grid-cols-3  gap-4 p-10 ">
           {about.map((ele, index) => {
             return (
-              <div className=" flex gap-2 flex-col border border-primary/60 rounded-2xl p-10 shadow-md justify-center items-center ">
+              <div key={index} className=" flex gap-2 flex-col border border-primary/60 rounded-2xl p-10 shadow-md justify-center items-center ">
                 {ele.icon}
                 <span className="text-lg font-semibold">{ele.title}</span>
                 <span className="text-center" >{ele.description}</span>

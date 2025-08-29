@@ -43,7 +43,7 @@ const Hero = ({ mounted, currentEmotion }: HeroProps) => {
         {/* Subtitle */}
         <p className=" px-10 md:p-0 max-w-xl mx-auto">
           Experience a new way of emotional support. Our AI companion is here to
-          listen, understand, and guide you through life's journey.
+          listen, understand, and guide you through {`life's`} journey.
         </p>
 
       </motion.div>

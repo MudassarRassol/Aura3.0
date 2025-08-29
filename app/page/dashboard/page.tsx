@@ -4,7 +4,7 @@ import Header from "@/components/Dashboard/Header";
 import QuickActions from "@/components/Dashboard/QuickActions";
 import Overview from "@/components/Dashboard/Overview";
 import Insights from "@/components/Dashboard/Insights";
-import { Flower2, Gamepad2, Music2, TreePine, Waves, Wind } from "lucide-react";
+import { Flower2, Gamepad2, TreePine, Waves, Wind } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
