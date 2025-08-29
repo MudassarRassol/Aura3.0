@@ -2,7 +2,8 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 type Emotion = { value: number; label: string; color: string };
 
 type EmotionSliderProps = {
@@ -18,6 +19,7 @@ const EmotionSlider = ({
   setEmotion,
   currentEmotion,
 }: EmotionSliderProps) => {
+   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   return (
     <div className="flex flex-col items-center justify-center w-full -mt-10  md:w-2xl mx-auto px-3 ">
       <span>{`Whatever you're feeling, we're here to listen`}</span>
@@ -57,7 +59,7 @@ const EmotionSlider = ({
       </p>
 
       {/* CTA */}
-      <Link href="/page/dashboard" >
+      <Link href={isLoggedIn ? "/page/dashboard" : "/page/login"} >
       <Button className="mt-10 font-semibold w-[200px] p-5 rounded-2xl bg-gradient-to-r from-primary via-primary/90 to-secondary bg-clip-text text-transparent hover:scale-110 hover:to-purple-700 shadow-2xl flex items-center mx-auto ">
         Begin Your Journey
         <ArrowRight className="  text-purple-500  hover:ml-2  " />

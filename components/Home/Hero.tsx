@@ -1,4 +1,5 @@
 import { Ripple } from "@/components/magicui/ripple";
+
 import { motion } from "framer-motion";
 import { Waves } from "lucide-react";
 
@@ -8,6 +9,7 @@ type HeroProps = {
 };
 
 const Hero = ({ mounted, currentEmotion }: HeroProps) => {
+
   return (
     <section className="relative  select-none min-h-[80vh]  flex flex-col items-center justify-center  px-4">
       {/* Background gradients */}

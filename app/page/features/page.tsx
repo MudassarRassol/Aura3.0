@@ -96,12 +96,7 @@ const page = () => {
         <p className=" text-sm text-muted-foreground mt-4 p-3 md:w-2xl text-center ">
           Join thousands of users benefiting from AI-powered mental health support.
         </p>
-        <Link href={'/page/dashboard'} className=" cursor-pointer " >
-        <Button className=" flex items-center  cursor-pointer text-black " >
-            Start Your Journey 
-            <Heart size={15} />
-        </Button>
-        </Link>
+
       </div>
     </div>
   );
