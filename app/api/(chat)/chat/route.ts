@@ -78,7 +78,7 @@ export async function POST(req: Request) {
                 Keep the tone warm, human-like, and encouraging. Do not sound robotic.  
                 `,
         },
-        ...lastthreemessage, // ✅ spread so it's flat,
+        ...convertToModelMessages(lastthreemessage), // ✅ spread so it's flat,
       ],
     });
 

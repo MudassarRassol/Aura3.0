@@ -24,9 +24,9 @@ const page = () => {
       setloading(true);
       if (Password === Confirmpassword) {
         const response = await axios.post("/api/register", {
-          Email,
-          Password,
-          username: name,
+          email : Email,
+          password : Password,
+          username: Name,
         });
 
         if (response.status === 201) {

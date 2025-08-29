@@ -13,23 +13,24 @@ import { useDispatch } from "react-redux";
 import { login } from "@/redux/store/authSlice";
 const page = () => {
 
-  const [Email,setemail] = useState("");
-  const [Password,setpassword] = useState("");
+  const [email,setemail] = useState("");
+  const [password,setpassword] = useState("");
   const [Error, seterror] = useState("");
   const [Loading, setloading] = useState(false);
-  const Dispatch = useDispatch();
+  const Dispatch = useDispatch(); 
   const Router = useRouter();
 
 
   const handelsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(email,password);
     try {
       seterror("");
       setloading(true);
       setloading(true);
         const response = await axios.post("/api/login", {
-          Email,
-          Password
+         email,
+         password
         });
 
         if (response.status === 201) {
@@ -67,7 +68,7 @@ const page = () => {
             <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
               <Mail className=" w-5 h-5 m-2  " />
               <Input
-              value={Email}
+              value={email}
               onChange={(e)=>{setemail(e.target.value)}}
                 id="email"
                 placeholder="Enter your email "
@@ -82,7 +83,7 @@ const page = () => {
             <div className=" flex items-center justify-center select-none border border-muted-foreground rounded-md ">
               <Key className=" w-5 h-5 m-2  " />
               <Input
-                value={Password}
+                value={password}
                 onChange={(e)=>{setpassword(e.target.value)}}
                 id="password"
                 placeholder="Enter your password "
