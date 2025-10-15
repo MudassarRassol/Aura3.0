@@ -110,7 +110,7 @@ export async function GET(req: Request) {
     `;
 
     const aiResponse = await generateText({
-      model: google("gemini-pro")
+      model: google("gemini-pro"),
       prompt: aiPrompt,
       maxOutputTokens: 100,
     });
